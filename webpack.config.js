@@ -21,6 +21,12 @@ module.exports = {
         rules: [ // 第三方匹配规则
             { test: /\.js|jsx$/, use: 'babel-loader', exclude: /node_modules/ }, // 必须添加 exclude 排除项
         ]
+    },
+    resolve: {
+        extensions: ['.js', '.jsx', '.json'], // 表示，这几种类型的后缀名，可以省略不写
+        alias: {
+            '@': path.join(__dirname, './src') // 这样在项目中，@ 符号就代表根目录中的 src 路径
+        }
     }
 }
 
