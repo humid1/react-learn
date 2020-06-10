@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="name">
+        <button @click.prevent="add">添加</button>
+        <hr>
+        <p v-for="item in arr" :key="item.id">
+            <input type="checkbox">{{ item.name }}
+        </p>
+        <hr>
+        <p v-for="item in arr">
+            <input type="checkbox">{{ item.name }}
+        </p>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                name: '6666',
+                arr: [
+                    { id: 1, name: 'xiao1'},
+                    { id: 2, name: 'xiao2'},
+                    { id: 3, name: 'xiao3'},
+                ]
+            },
+            methods: {
+                add() {
+                    var newUser = { id: this.arr.length + 1, name: this.name }
+                    // this.arr.push(newUser);
+                    this.arr.unshift(newUser);
+                }
+            },
+        })
+    </script>
+</body>
+</html>
