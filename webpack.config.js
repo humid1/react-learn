@@ -20,6 +20,18 @@ module.exports = {
     module: { // 所有第三方 模块配置文件
         rules: [ // 第三方匹配规则
             { test: /\.js|jsx$/, use: 'babel-loader', exclude: /node_modules/ }, // 必须添加 exclude 排除项
+            // css-loader?modules 表示为普通的css 样式启用模块化
+            { test: /\.css$/, use: [
+                'style-loader',
+                {
+                    loader: 'css-loader',
+                    options: {
+                        modules: {
+                            localIdentName: '[path]-[name]-[local]-[hash:5]'
+                        }
+                    }
+                }
+            ]}, // 打包处理 css 样式表的第三方 loader
         ]
     },
     resolve: {

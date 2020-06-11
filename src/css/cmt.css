@@ -1,0 +1,26 @@
+/* 
+css 模块化，只针对 类选择器 和 ID选择器生效
+不会将 标签选择器 模块化
+*/
+.title {
+    color: red;
+    font-size: 35px;
+    text-align: center;
+    font-weight: 400
+}
+
+.item {
+    border: 1px dashed #ccc;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0 0 10px #ccc;
+}
+.itemTitle {
+    font-size: 20px;
+}
+.itemContent {
+    font-size: 16px;
+}
+:global(.test) {
+    font-style: italic;
+}

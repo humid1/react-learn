@@ -4,6 +4,10 @@ import React from 'react';
 // 导入评论项子组件
 import CmtItem from '@/components/CmtItem';
 
+// 导入样式 ( 对全局组件都生效 )
+import styleObj from '@/css/cmt.css';
+console.log(styleObj);
+
 export default class CmtList extends React.Component {
     constructor() {
         super();
@@ -19,8 +23,19 @@ export default class CmtList extends React.Component {
     }
     render() {
         return <div>
-            <h1>这是评论列表组件</h1>
+            {/* <h1 className={ styleObj.title + ' test' }>这是评论列表组件</h1> */}
+            <h1 className={ [styleObj.title,'test'].join(' ') }>这是评论列表组件</h1>
             {this.state.commentsList.map( item => <CmtItem {...item} key={item.id}></CmtItem>)}
         </div>
+
+        // =================== 行内样式 =======================
+        // return <div>
+        //     {/* 在 jsx 中，如果想要写行内样式，不能直为 style 设置字符串的值 */}
+        //     {/* 应该写成 style={ { color: 'red' } } */}
+        //     <h1 style={ { color: 'red', fontSize: '35px',textAlign: 'center',fontWeight: '400' } }>这是评论列表组件</h1>
+        //     {this.state.commentsList.map( item => <CmtItem {...item} key={item.id}></CmtItem>)}
+        // </div>
+
+        
     }
 }
