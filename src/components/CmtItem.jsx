@@ -1,7 +1,7 @@
 import React from 'react';
 
 // 导入样式
-import cssObj from '@/css/cmt.css';
+import cssObj from '@/style/cmt.scss';
 
 export default function CmtItem(props) {
     return <div className={cssObj.item}>

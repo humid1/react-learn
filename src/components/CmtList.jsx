@@ -4,8 +4,15 @@ import React from 'react';
 // 导入评论项子组件
 import CmtItem from '@/components/CmtItem';
 
+// 如果在引用某个包的时候，这个包被安装到了 node_modules 目录中，
+// 则可以省略 node_modules 这一层目录，直接以包名的开始引入自己的模块
+// 添加规定：第三方样式，都是以 css 结尾，自己的样式：scss 或 less 结尾
+import 'bootstrap/dist/css/bootstrap.css';
+
+
 // 导入样式 ( 对全局组件都生效 )
-import styleObj from '@/css/cmt.css';
+import styleObj from '@/style/cmt.scss';
+
 console.log(styleObj);
 
 export default class CmtList extends React.Component {
@@ -25,6 +32,9 @@ export default class CmtList extends React.Component {
         return <div>
             {/* <h1 className={ styleObj.title + ' test' }>这是评论列表组件</h1> */}
             <h1 className={ [styleObj.title,'test'].join(' ') }>这是评论列表组件</h1>
+            
+            <button className='btn btn-primary'>按钮</button>
+
             {this.state.commentsList.map( item => <CmtItem {...item} key={item.id}></CmtItem>)}
         </div>
 
@@ -36,6 +46,5 @@ export default class CmtList extends React.Component {
         //     {this.state.commentsList.map( item => <CmtItem {...item} key={item.id}></CmtItem>)}
         // </div>
 
-        
     }
 }
